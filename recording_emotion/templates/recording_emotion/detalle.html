@@ -1,0 +1,28 @@
+{% extends 'recording_emotion/base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <h3 class="mb-0">Dia {{ registro.id }}</h3>
+        <span class="badge bg-light text-primary fs-5">{{ registro.get_emotion_display }}</span>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Cómo fue tu día:</h5>
+        <p class="card-text">{{ registro.description_day | linebreaks }}</p>
+        
+        <h5 class="card-title mt-4">Lo que descubriste:</h5>
+        <p class="card-text">{{ registro.discovery }}</p>
+        
+        <div class="mt-4">
+            <a href="{% url 'registro_editar' registro.slug %}" class="btn btn-warning">Editar registro</a>
+            <a href="{% url 'registro_eliminar' registro.slug %}" class="btn btn-danger">Eliminar registro</a>
+            <a href="{% url 'registro_lista' %}" class="btn btn-secondary">Volver a la lista</a>
+        </div>
+    </div>
+    <!-- <div class="card-footer text-muted">
+        <div>Creado: {{ registro.created_date|date:"d/m/Y H:i" }}</div>
+        <div>Última actualización: {{ registro.updated|date:"d/m/Y H:i" }}</div>
+        <div>Identificador: {{ registro.slug }}</div>
+    </div> -->
+</div>
+{% endblock %}

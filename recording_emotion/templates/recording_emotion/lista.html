@@ -1,0 +1,60 @@
+{% extends 'recording_emotion/base.html' %}
+
+{% block content %}
+
+<div class="col col-md-11 offset-md-1 my-4">
+    <h1 class="display-6 fs-2">Diario de 30 dias para conocerte a ti mismo.</h1>
+</div>
+
+<div class="col col-md-11 offset-md-1 d-flex justify-content-between align-items-center my-4">
+    
+    <h4>Mis Registros Emocionales</h4>
+    <a href="{% url 'registro_nuevo' %}" class="btn btn-primary">Nuevo Registro</a>
+</div>
+
+<!-- Tarjetas de recompensa -->
+<div class="col col-md-11 offset-md-1 d-flex justify-content-start">
+    {% with registros.count as total_registros %}
+    <div class="d-flex justify-content-center mb-2">
+        {% if total_registros >= 3 %}
+            <div class="card reward-card text-center mx-2">
+                <div class="card-body">
+                    <i class="fa fa-trophy fa-2x text-secondary"></i>
+                    <h5 class="mt-2">30 días</h5>
+                    <a href="#" class="btn btn-sm btn-dark">Recompensa</a>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if total_registros >= 5 %}
+            <div class="card reward-card text-center mx-1" >
+                <div class="card-body">
+                    <i class="fa fa-trophy fa-2x text-secondary"></i>
+                    <h5 class="mt-2">60 días</h5>
+                    <a href="#" class="btn btn-sm btn-dark">Recompensa</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endwith %}
+
+</div>
+<!-- Lista de registros emocionales -->
+{% if registros %}
+    <div class="col col-md-11 offset-md-1 d-flex flex-wrap justify-content-center justify-content-md-start">
+        {% for registro in registros %}
+            <div class="p-2" style="width: 5rem;">
+                <div class="border text-center bg-dark">
+                    <a href="{% url 'registro_detalle' registro.slug %}" class="btn btn-sm btn-dark w-100" title="Ver detalles">
+                        <h2 class="mt-2">{{ registro.id }}</h2>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        No has creado ningún registro emocional aún. ¡Comienza a registrar tus emociones!
+    </div>
+{% endif %}
+{% endblock %}
