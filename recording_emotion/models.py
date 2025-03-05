@@ -7,10 +7,10 @@ class RecordingEmotion(models.Model):
         ('feliz', '😊 Feliz'),
         ('agradecido', '🙏 Agradecido'),
         ('emocionado', '🤩 Emocionado'),
-        ('triste', '😢 Triste'),
-        ('enojado', '😠 Enojado'),
         ('relajado', '😌 Relajado'),
         ('contento', '😃 Contento'),
+        ('triste', '😢 Triste'),
+        ('enojado', '😠 Enojado'),
         ('cansado', '😫 Cansado'),
         ('aburrido', '😒 Aburrido'),
     ]
@@ -26,18 +26,27 @@ class RecordingEmotion(models.Model):
         return f"Registro del {self.created_date.strftime('%d/%m/%Y')} - {self.get_emotion_display()}"
     
     def save(self, *args, **kwargs):
-        # Generar slug si no existe
-        if not self.slug:
-            # Usamos timezone.now() para tener una fecha actual
+        update_slug = False
+
+        # Si es una instancia nueva o el slug está vacío, se genera el slug.
+        if not self.pk or not self.slug:
+            update_slug = True
+        else:
+            # Compara la emoción original con la actual
+            orig = RecordingEmotion.objects.get(pk=self.pk)
+            if orig.emotion != self.emotion:
+                update_slug = True
+
+        if update_slug:
             current_time = timezone.now()
             base_slug = f"{self.emotion}-{current_time.strftime('%Y-%m-%d')}"
-            self.slug = slugify(base_slug)
-            
-            # Asegurar que el slug sea único
+            new_slug = slugify(base_slug)
             counter = 1
-            while RecordingEmotion.objects.filter(slug=self.slug).exists():
-                self.slug = f"{slugify(base_slug)}-{counter}"
+            # Excluimos la instancia actual en la verificación para evitar conflictos
+            while RecordingEmotion.objects.filter(slug=new_slug).exclude(pk=self.pk).exists():
+                new_slug = f"{slugify(base_slug)}-{counter}"
                 counter += 1
+            self.slug = new_slug
                 
         super().save(*args, **kwargs)
     

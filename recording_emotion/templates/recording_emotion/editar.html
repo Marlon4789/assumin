@@ -1,33 +1,41 @@
 {% extends 'recording_emotion/base.html' %}
 
 {% block content %}
-<div class="card">
-    <div class="card-header bg-primary text-white">
-        <h3 class="mb-0">Editar registro del {{ registro.created_date|date:"d/m/Y" }}</h3>
-    </div>
-    <div class="card-body">
-        <form method="post">
+<div class="container">
+  <div class="row my-4">
+    <div class="col-12 col-md-8 offset-md-2">
+      <div class="card rounded-1 border-0 shadow-sm">
+        <div class="card-header bg-dark text-white  rounded-1">
+          <h3 class="mb-0">Editar registro del {{ registro.created_date|date:"d/m/Y" }}</h3>
+        </div>
+        <div class="card-body" style="background-color: rgb(232, 235, 232);">
+          <form method="post">
             {% csrf_token %}
-            
             <div class="mb-3">
-                <label for="{{ form.emotion.id_for_label }}" class="form-label"><strong>¿Califica cómo estuvo tu día?</strong></label>
-                {{ form.emotion }}
+              <label for="{{ form.emotion.id_for_label }}" class="form-label">
+                <strong>¿Califica cómo estuvo tu día?</strong>
+              </label>
+              {{ form.emotion }}
+            </div>
+            <div class="mb-3">
+              <label for="{{ form.description_day.id_for_label }}" class="form-label">
+                <strong>¿Cuéntame cómo fue tu día?</strong>
+              </label>
+              {{ form.description_day|safe }}
             </div>
             
-            <div class="mb-3">
-                <label for="{{ form.description_day.id_for_label }}" class="form-label"><strong>¿Cuéntame cómo fue tu día?</strong></label>
-                {{ form.description_day  | safe }}
-                
+            <div class="d-flex flex-nowrap justify-content-end gap-2">
+              <button type="submit" class="btn btn-dark rounded-1 mb-2">
+                <i class="fa-solid fa-save"></i> Guardar cambios
+              </button>
+              <a href="{% url 'registro_detalle' registro.slug %}" class="btn btn-secondary rounded-1 mb-2">
+                <i class="fa-solid fa-xmark"></i> Cancelar
+              </a>
             </div>
-            
-            <div class="mb-3">
-                <label for="{{ form.discovery.id_for_label }}" class="form-label"><strong>¿Descubriste algo nuevo hoy?</strong></label>
-                {{ form.discovery }}
-            </div>
-            
-            <button type="submit" class="btn btn-primary">Guardar cambios</button>
-            <a href="{% url 'registro_detalle' registro.slug %}" class="btn btn-secondary">Cancelar</a>
-        </form>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 {% endblock %}
