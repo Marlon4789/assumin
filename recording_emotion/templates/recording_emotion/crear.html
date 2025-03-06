@@ -1,6 +1,33 @@
 {% extends 'recording_emotion/base.html' %}
 
 {% block content %}
+
+<style>
+  select.form-select {
+    background-color: rgb(232, 235, 232);
+    font-style:oblique;
+    font-weight: 500;
+  }
+  select.form-select:focus {
+    background-color: rgb(232, 235, 232);  /* Sobrescribe el fondo al hacer focus */
+    box-shadow: none;           /* Opcional: remueve la sombra */
+  }
+
+  textarea.form-control {
+    background-color: rgb(232, 235, 232);
+    font-style:oblique;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  textarea.form-control:focus {
+    background-color: rgb(232, 235, 232);  /* Sobrescribe el fondo al hacer focus */
+    box-shadow: none;           /* Opcional: remueve la sombra */
+  }
+  textarea.form-control {
+    font-style:oblique;
+    color: black;
+  }
+</style>
   
   <!-- Card del formulario -->
   <div class="row">
@@ -11,11 +38,11 @@
           <form method="post" action="{% url 'registro_nuevo' %}">
             {% csrf_token %}
             <div class="mb-3">
-              <label for="{{ form.emotion.id_for_label }}" class="form-label"><strong>¿Califica cómo estuvo tu día?</strong></label>
+              
               {{ form.emotion }}
             </div>
             <div class="mb-3">
-              <label for="{{ form.description_day.id_for_label }}" class="form-label"><strong>¿Cuéntame cómo fue tu día?</strong></label>
+              
               {{ form.description_day }}
             </div>
   

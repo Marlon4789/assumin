@@ -6,11 +6,11 @@
     <div class="col-12 col-md-8 offset-md-2">
       <div class="card rounded-1 border-0 shadow-sm">
         <div class="card-header bg-dark text-white rounded-1">
-          <h3 class="mb-0">Confirmar eliminación</h3>
+          <h5 class="mb-0">Confirmar eliminación</h5>
         </div>
         <div class="card-body" style="background-color: rgb(232, 235, 232);">
           <p class="fs-5">
-            ¿Estás seguro que deseas eliminar el registro emocional del {{ registro.created_date|date:"d/m/Y" }}?
+            ¿Estás seguro que deseas eliminar el registro del {{ registro.created_date|date:"d - F - Y" }}?
           </p>
           <div class="alert alert-warning">
             <p><strong>Emoción:</strong> {{ registro.get_emotion_display }}</p>

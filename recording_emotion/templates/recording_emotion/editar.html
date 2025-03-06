@@ -1,31 +1,52 @@
 {% extends 'recording_emotion/base.html' %}
 
 {% block content %}
+
+<style>
+    select.form-select {
+      background-color: rgb(232, 235, 232);
+      font-style:oblique;
+      font-weight: 500;
+    }
+    select.form-select:focus {
+      background-color: rgb(232, 235, 232);  /* Sobrescribe el fondo al hacer focus */
+      box-shadow: none;           /* Opcional: remueve la sombra */
+    }
+  
+    textarea.form-control {
+      background-color: rgb(232, 235, 232);
+      font-style:oblique;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    textarea.form-control:focus {
+      background-color: rgb(232, 235, 232);  /* Sobrescribe el fondo al hacer focus */
+      box-shadow: none;           /* Opcional: remueve la sombra */
+    }
+    textarea.form-control {
+      font-style:oblique;
+    }
+  </style>
+
 <div class="container">
   <div class="row my-4">
     <div class="col-12 col-md-8 offset-md-2">
       <div class="card rounded-1 border-0 shadow-sm">
-        <div class="card-header bg-dark text-white  rounded-1">
-          <h3 class="mb-0">Editar registro del {{ registro.created_date|date:"d/m/Y" }}</h3>
+        <div class="px-3" style="background-color: rgb(232, 235, 232);">
+          <h4 class="my-2">Editar registro del {{ registro.created_date|date:"d - F - Y" }}</h4>
         </div>
         <div class="card-body" style="background-color: rgb(232, 235, 232);">
           <form method="post">
             {% csrf_token %}
             <div class="mb-3">
-              <label for="{{ form.emotion.id_for_label }}" class="form-label">
-                <strong>¿Califica cómo estuvo tu día?</strong>
-              </label>
               {{ form.emotion }}
             </div>
             <div class="mb-3">
-              <label for="{{ form.description_day.id_for_label }}" class="form-label">
-                <strong>¿Cuéntame cómo fue tu día?</strong>
-              </label>
               {{ form.description_day|safe }}
             </div>
             
             <div class="d-flex flex-nowrap justify-content-end gap-2">
-              <button type="submit" class="btn btn-dark rounded-1 mb-2">
+              <button type="submit" class="btn btn-dark rounded-1 mb-2" style="font-style: oblique;">
                 <i class="fa-solid fa-save"></i> Guardar cambios
               </button>
               <a href="{% url 'registro_detalle' registro.slug %}" class="btn btn-secondary rounded-1 mb-2">

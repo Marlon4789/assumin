@@ -6,11 +6,11 @@
     <div class="card rounded-1 border-0">
       <div class="card-body rounded-1" style="background-color: rgb(232, 235, 232);">
         <!-- Título y emoción -->
-        <h3 class="mb-3 d-flex justify-content-between">
+        <h4 class="mb-3 d-flex flex-wrap justify-content-between ">
             Día {{ registro.created_date|date:"d - F - Y" }}
 
           <span class="badge bg-dark text-white fs-5 py-2">{{ registro.get_emotion_display }}</span>
-        </h3>
+        </h4>
         
         <!-- Descripción del día -->
         <h5 class="mb-2">Cómo fue tu día:</h5>
