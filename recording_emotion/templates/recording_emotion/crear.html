@@ -31,8 +31,8 @@
   
   <!-- Card del formulario -->
   <div class="row">
-    <div class="col-12 col-md-8 offset-md-2 my-4">
-      <div class="card rounded-1 border-0">
+    <div class="col-12 col-md-8 offset-md-2 my-1">
+      <div class="rounded-1 border-0">
         
         <div class="card-body rounded-1"style="background-color: rgb(232, 235, 232);">
           <form method="post" action="{% url 'registro_nuevo' %}">
@@ -47,7 +47,7 @@
             </div>
   
             <div class="d-flex flex-nowrap justify-content-end gap-2">
-              <button type="submit" class="btn btn-dark rounded-1">
+              <button type="submit" class="btn btn-dark rounded-1" style="font-style: oblique;">
                 <i class="fa-solid fa-save"></i> Guardar registro
               </button>
               <a href="{% url 'registro_lista' %}" class="btn btn-secondary rounded-1">

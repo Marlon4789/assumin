@@ -28,14 +28,17 @@
     }
   </style>
 
-<div class="container">
-  <div class="row my-4">
+
+  <div class="row my-3">
     <div class="col-12 col-md-8 offset-md-2">
-      <div class="card rounded-1 border-0 shadow-sm">
-        <div class="px-3" style="background-color: rgb(232, 235, 232);">
-          <h4 class="my-2">Editar registro del {{ registro.created_date|date:"d - F - Y" }}</h4>
+      <div class="rounded-1 border-0 shadow-sm">
+        <div style="background-color: rgb(232, 235, 232);">
+          <h5 class="">Editar registro del</h5>
+          <figcaption class="blockquote-footer pt-2">
+            {{ registro.created_date|date:"d - F - Y" }}
+          </figcaption>
         </div>
-        <div class="card-body" style="background-color: rgb(232, 235, 232);">
+        <div>
           <form method="post">
             {% csrf_token %}
             <div class="mb-3">
@@ -58,5 +61,5 @@
       </div>
     </div>
   </div>
-</div>
+
 {% endblock %}

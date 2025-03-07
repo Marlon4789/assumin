@@ -1,24 +1,24 @@
 {% extends 'recording_emotion/base.html' %}
 
 {% block content %}
-<div class="row my-4">
+<div class="row my-3">
   <div class="col-12 col-md-8 offset-md-2">
-    <div class="card rounded-1 border-0">
-      <div class="card-body rounded-1" style="background-color: rgb(232, 235, 232);">
+    <div class="rounded-1 border-0">
+      <div class="rounded-1" style="background-color: rgb(232, 235, 232);">
         <!-- Título y emoción -->
-        <h4 class="mb-3 d-flex flex-wrap justify-content-between ">
+        <h5 class="mb-3 d-flex flex-wrap justify-content-between align-items-center">
             Día {{ registro.created_date|date:"d - F - Y" }}
 
-          <span class="badge bg-dark text-white fs-5 py-2">{{ registro.get_emotion_display }}</span>
-        </h4>
+          <span class="badge bg-dark text-white fs-6 py-2">{{ registro.get_emotion_display }}</span>
+        </h5>
         
         <!-- Descripción del día -->
         <h5 class="mb-2">Cómo fue tu día:</h5>
         <p class="card-text">{{ registro.description_day|linebreaks }}</p>
         
         <!-- Descubrimiento -->
-        <h5 class="mb-2 mt-4">Lo que descubriste:</h5>
-        <p class="card-text">{{ registro.discovery }}</p>
+        <!-- <h5 class="mb-2 mt-4">Lo que descubriste:</h5>
+        <p class="card-text">{{ registro.discovery }}</p> -->
         
         <!-- Acciones -->
         <div class="mt-4 d-flex flex-nowrap justify-content-end gap-2">
