@@ -1,0 +1,20 @@
+{% extends 'layouts/base_login.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="card rounded-1 border-0 shadow-sm">
+        <div class="card-body" style="background-color: rgb(232, 235, 232);">
+            <h2 class="mb-3">Bienvenido a tu Diario de Emociones</h2>
+            <p class="fs-5">
+                Esta aplicación te permite registrar y reflexionar sobre tus emociones diarias. Cada entrada te ayudará a conocerte mejor y a seguir tu evolución emocional a lo largo del tiempo.
+            </p>
+            <p class="fs-5">
+                Explora tus registros, edítalos y observa tu progreso. ¡Comienza tu viaje hacia el autoconocimiento!
+            </p>
+            <a href="{% url 'registro_lista' %}" class="btn btn-dark rounded-1 mt-3">
+                Ir a mis registros <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

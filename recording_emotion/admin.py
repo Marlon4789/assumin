@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import RecordingEmotion
+from .models import RecordingEmotion, User
 
 @admin.register(RecordingEmotion)
 class RecordingEmotionAdmin(admin.ModelAdmin):
-    list_display = ('get_emotion_display', 'created_date', 'updated', 'slug')
+    list_display = ('user','get_emotion_display', 'created_date')
     list_filter = ('emotion', 'created_date')
     search_fields = ('description_day', 'discovery')
     readonly_fields = ('created_date', 'updated', 'slug')

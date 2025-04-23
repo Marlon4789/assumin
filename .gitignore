@@ -1,0 +1,45 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+db.sqlite3
+guia.txt
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+
+# Media / uploads
+media/
+
+# Static files:
+staticfiles/
+static/
+
+# Local environment settings:
+.env
+*.env
+
+# Virtual environment:
+venv/
+env/
+.virtualenv/
+
+# IDE files:
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Node modules (if using npm or yarn for front-end):
+node_modules/
+
+# Backup files:
+*.bak
+*.swp
+*.orig
+*.save
+
