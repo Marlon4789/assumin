@@ -13,7 +13,7 @@ class RecordingListView(LoginRequiredMixin, ListView):
     login_url = 'login'  # URL a la que redirige si no está autenticado
 
     def get_queryset(self):
-        return RecordingEmotion.objects.filter(user=self.request.user).order_by('-created_date')
+        return RecordingEmotion.objects.filter(user=self.request.user).order_by('created_date')
 
 
 class RecordingCreateView(LoginRequiredMixin, CreateView):
