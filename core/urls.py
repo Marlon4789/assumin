@@ -22,4 +22,6 @@ urlpatterns = [
     path('', include('recording_emotion.urls')),
     # login urls
     path('login/', include('login.urls')),
+    # new ideas urls
+    path('new_ideas/', include('new_ideas.urls')),
 ]

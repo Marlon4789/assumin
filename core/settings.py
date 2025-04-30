@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'recording_emotion',
     'login',
+    'new_ideas',
 ]
 
 MIDDLEWARE = [

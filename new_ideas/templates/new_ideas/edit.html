@@ -1,0 +1,67 @@
+{% extends 'layouts/base_login.html' %}
+
+{% block content %}
+
+<style>
+    select.form-select {
+      background-color: rgb(232, 235, 232);
+      font-style:oblique;
+      font-weight: 500;
+    }
+    select.form-select:focus {
+      background-color: rgb(232, 235, 232);  /* Sobrescribe el fondo al hacer focus */
+      box-shadow: none;           /* Opcional: remueve la sombra */
+    }
+  
+    
+    textarea.form-control:focus {
+      background-color: rgb(232, 235, 232);  /* Sobrescribe el fondo al hacer focus */
+      box-shadow: none; 
+                /* Opcional: remueve la sombra */
+    }
+    textarea.form-control {
+      font-style:oblique;
+      
+     
+    }
+    #id_idea {
+    background-color: rgb(232, 235, 232);
+    font-style: oblique;
+    width: 100%;           /* Asegura que ocupe todo el ancho posible */
+    min-width: 100%;       /* Previene que se reduzca */
+    box-sizing: border-box; /* Considera padding y border en el ancho */
+    border-radius: 10px; /* Bordes redondeados */
+    border: solid 1px black; /* Borde gris claro */
+    box-shadow: none; /* Remueve la sombra */
+    font-weight: 500;
+  }
+  #id_idea:focus {
+  background-color: rgb(232, 235, 232);
+  outline: none !important;   /* Elimina borde del navegador */
+  box-shadow: none !important; /* Elimina sombra Bootstrap */
+  border: 1px solid black !important; /* Estilo de borde al hacer focus */
+}
+  </style>
+
+
+<div class="row mt-md-4" >
+  <div class="col-12 col-md-8 offset-md-2">
+    <div class="border-0 rounded-1">
+      <div class="card-body rounded-1" style="background-color: rgb(232, 235, 232);">
+        <h2 class="mb-3" style="font-style: oblique;">Editar Idea</h2>
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            {{ form.idea }}
+          </div>
+          <div class="d-flex justify-content-end gap-2">
+            <button type="submit" class="btn btn-dark rounded-1" style="font-style: oblique;"><i class="fa-solid fa-save"></i> Guardar cambios</button>
+            <a href="{% url 'new_ideas_detail' idea.slug %}" class="btn btn-secondary rounded-1" style="font-style: oblique;"><i class="fa-solid fa-xmark"></i> Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
