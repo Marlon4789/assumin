@@ -4,7 +4,7 @@ from .models import AddNewIdeas
 @admin.register(AddNewIdeas)
 class AddNewIdeasAdmin(admin.ModelAdmin):
     # Campos que aparezcan en la lista de objetos
-    list_display = ('user', 'idea', 'created_date', 'updated', 'slug')
+    list_display = ('user', 'idea', 'updated')
     # Campos de búsqueda
     search_fields = ('idea', 'user__username')
     # Filtros laterales
