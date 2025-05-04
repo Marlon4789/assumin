@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .models import RecordingEmotion
 from .forms import RecordingEmotionForm
+from analysis_registers_ai.models import SWOTAnalysis
 
 class RecordingListView(LoginRequiredMixin, ListView):
     model = RecordingEmotion
@@ -14,7 +15,13 @@ class RecordingListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return RecordingEmotion.objects.filter(user=self.request.user).order_by('created_date')
-
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Tomamos el análisis más reciente para este usuario, si existe
+        latest = SWOTAnalysis.objects.filter(user=self.request.user).first()
+        context['latest_swot'] = latest
+        return context
 
 class RecordingCreateView(LoginRequiredMixin, CreateView):
     model = RecordingEmotion

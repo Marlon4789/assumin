@@ -1,0 +1,102 @@
+{% extends 'layouts/base_login.html' %}
+
+{% block content %}
+<div class="row my-3">
+  <div class="col-12 col-md-8 offset-md-2">
+    <!-- Saludo personalizado -->
+    <div class="alert alert-primary text-center">
+      <h4>¡Hola {{ analysis.user.first_name|default:analysis.user.username }}!</h4>
+      <p>Este es tu análisis personalizado basado en tus últimos registros emocionales.</p>
+    </div>
+
+    <!-- Análisis psicológico detallado -->
+    <div class="card mb-4 rounded-1 shadow-sm">
+      <div class="card-header bg-secondary text-white">
+        <h5 class="mb-0">Análisis Psicológico</h5>
+      </div>
+      <div class="card-body" style="background-color: #f8f9fa;">
+        <p>{{ analysis.analysis|linebreaks }}</p>
+      </div>
+    </div>
+
+    <!-- Patrones positivos y negativos -->
+    <div class="row g-3 mb-4">
+      <div class="col-6">
+        <div class="card rounded-1 shadow-sm">
+          <div class="card-header bg-success text-white">
+            <h6 class="mb-0">Patrones Positivos</h6>
+          </div>
+          <div class="card-body" style="background-color: #f0fff4;">
+            <ul class="mb-0">
+              {% for pat in analysis.positive_patterns %}
+              <li>{{ pat }}</li>
+              {% empty %}
+              <li>No se identificaron patrones positivos.</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card rounded-1 shadow-sm">
+          <div class="card-header bg-warning text-white">
+            <h6 class="mb-0">Patrones Negativos</h6>
+          </div>
+          <div class="card-body" style="background-color: #fff8f0;">
+            <ul class="mb-0">
+              {% for pat in analysis.negative_patterns %}
+              <li>{{ pat }}</li>
+              {% empty %}
+              <li>No se identificaron patrones negativos.</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOFA -->
+    <div class="card mb-4 rounded-1 shadow-sm">
+      <div class="card-header bg-dark text-white">
+        <h6 class="mb-0">Analisis DOFA del {{ analysis.period_start }} – {{ analysis.period_end }}</h6>
+      </div>
+      <div class="card-body" style="background-color: #f8f9fa;">
+        <h6 class="text-success">Fortalezas</h6>
+        <p>{{ analysis.strengths|linebreaks }}</p>
+
+        <h6 class="text-danger mt-3">Debilidades</h6>
+        <p>{{ analysis.weaknesses|linebreaks }}</p>
+
+        <h6 class="text-primary mt-3">Oportunidades</h6>
+        <p>{{ analysis.opportunities|linebreaks }}</p>
+
+        <h6 class="text-warning mt-3">Amenazas</h6>
+        <p>{{ analysis.threats|linebreaks }}</p>
+      </div>
+    </div>
+
+    <!-- Recomendaciones finales -->
+    <div class="card mb-4 rounded-1 shadow-sm">
+      <div class="card-header bg-info text-white">
+        <h5 class="mb-0">Recomendaciones Finales</h5>
+      </div>
+      <div class="card-body" style="background-color: #e9f7fd;">
+        <p>{{ analysis.recommendations|linebreaks }}</p>
+
+        <!-- Mensaje de ánimo -->
+        <div class="alert alert-success mt-3" role="alert">
+          <strong>¡Tú puedes, {{ analysis.user.first_name|default:analysis.user.username }}!</strong>
+          Sigue estos pasos y verás cómo evolucionas día a día.
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón volver -->
+    <div class="d-flex justify-content-end">
+      <a href="{% url 'swot_list' %}" class="btn btn-secondary rounded-1">
+        <i class="fa-solid fa-arrow-left"></i> Volver
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

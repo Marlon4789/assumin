@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'recording_emotion',
     'login',
     'new_ideas',
+    'analysis_registers_ai',
 ]
 
 MIDDLEWARE = [
@@ -133,6 +134,8 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+#OpenAI API Key
+OPENAI_API_KEY = config('OPENAI_API_KEY')
 
 
 # Static files (CSS, JavaScript, Images)

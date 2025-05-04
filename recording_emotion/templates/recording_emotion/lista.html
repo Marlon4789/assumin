@@ -19,24 +19,24 @@
     </div>
   </div>
 
-  <!-- Tarjetas de recompensa -->
+  <!-- Tarjetas de analysis mensual DOFA  -->
   <div class="row d-flex justify-content-center">
     <div class="col-12 col-md-11 offset-md-1 d-flex gap-2 justify-content-start">
       {% with registros.count as total_registros %}
-      {% if total_registros >= 13 %}
-      <a href="#" class="btn btn-light mt-1 d-md-flex align-self-md-center rounded-1">
+      {% if total_registros >= 8 %}
+      <a href="{% url 'swot_list' %}" class="btn btn-light mt-1 d-md-flex align-self-md-center rounded-1">
         <i class="fa fa-trophy fa-2x" style="color: rgb(229, 120, 36);"></i>
           <h5 class="mt-2 px-1">30 días</h5>
       </a>
     {% endif %}
-        {% if total_registros >= 14 %}
+        {% if total_registros >= 60 %}
           <a href="#" class="btn btn-light mt-1 d-md-flex align-self-md-center rounded-1">
             <i class="fa fa-trophy fa-2x" style="color: rgb(11, 93, 201);"></i>
               <h5 class="mt-2 px-1">30 días</h5>
           </a>
         {% endif %}
 
-        {% if total_registros >= 15 %}
+        {% if total_registros >= 90 %}
           <a href="#" class="btn btn-light mt-1 d-md-flex align-self-md-center rounded-1">
             <i class="fa fa-trophy fa-2x" style="color: rgb(43, 146, 9);"></i>
               <h5 class="mt-2 px-1">90 días</h5>
