@@ -10,7 +10,7 @@ class RecordingEmotion(models.Model):
         ('agradecido', '🙏 Agradecido'),
         ('emocionado', '🤩 Emocionado'),
         ('relajado', '😌 Relajado'),
-        ('normal', '😐 Normal'),
+        ('normal', '🙂 Normal'),
         ('contento', '😃 Contento'),
         ('triste', '😢 Triste'),
         ('enojado', '😠 Enojado'),

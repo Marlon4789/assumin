@@ -45,9 +45,16 @@ INSTALLED_APPS = [
     'login',
     'new_ideas',
     'analysis_registers_ai',
+
+    # allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
+    "allauth.account.middleware.AccountMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,6 +63,33 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'openid',
+            'email',
+            'profile',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'APP': {
+            'client_id': config('GOOGLE_API_ID_CLIENT'),
+            'secret': config('GOOGLE_SECRET_CLIENT'),
+            'key': ''
+        }
+    }
+}
+
+
+LOGIN_REDIRECT_URL = 'registro_lista'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'home_login'
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+
 
 ROOT_URLCONF = 'core.urls'
 
@@ -74,6 +108,19 @@ TEMPLATES = [
         },
     },
 ]
+
+#Google account
+AUTHENTICATION_BACKENDS = [
+   
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+]
+
+
 
 WSGI_APPLICATION = 'core.wsgi.application'
 

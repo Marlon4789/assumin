@@ -26,4 +26,6 @@ urlpatterns = [
     path('new_ideas/', include('new_ideas.urls')),
     # analysis urls
     path('analysis/', include('analysis_registers_ai.urls')),
+    # Google allauth urls
+    path('accounts/', include('allauth.urls')),
 ]

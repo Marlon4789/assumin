@@ -5,7 +5,7 @@
 
   <div class="row">
     <div class="col-12 col-md-10 offset-md-1">
-      <img src="https://i.pinimg.com/originals/fd/37/40/fd3740138d23392099675cd4c1c69bb1.jpg" class="img-fluid rounded-1" alt="..." style="object-fit:cover; width: 100%;max-height: 12rem;">
+      <img src="https://i.pinimg.com/originals/fd/37/40/fd3740138d23392099675cd4c1c69bb1.jpg" class="img-fluid rounded-1" alt="..." style="object-fit:cover; width: 100%;max-height: 15rem;">
     </div>
   </div>
 
@@ -14,7 +14,7 @@
   <div class="row d-flex justify-content-center justify-content-md-start mt-2">
     <div class="col-12 col-md-11 offset-md-1">
       <h3 class="text-center text-md-start mt-2" style="font-weight: 200;">
-    Diario de 30 días para conocerte a ti mismo
+        <p>Hola {{ user.username | title }}, ¿Cómo estuvo tu día?</p>
       </h3>
     </div>
   </div>
@@ -26,11 +26,11 @@
       {% if total_registros >= 8 %}
       <a href="{% url 'swot_list' %}" class="btn btn-light mt-1 d-md-flex align-self-md-center rounded-1">
         <i class="fa fa-trophy fa-2x" style="color: rgb(229, 120, 36);"></i>
-          <h5 class="mt-2 px-1">30 días</h5>
+          <h5 class="mt-2 px-1">15 días</h5>
       </a>
     {% endif %}
-        {% if total_registros >= 60 %}
-          <a href="#" class="btn btn-light mt-1 d-md-flex align-self-md-center rounded-1">
+        {% if total_registros >= 30 %}
+          <a href="{% url 'swot_list' %}" class="btn btn-light mt-1 d-md-flex align-self-md-center rounded-1">
             <i class="fa fa-trophy fa-2x" style="color: rgb(11, 93, 201);"></i>
               <h5 class="mt-2 px-1">30 días</h5>
           </a>
@@ -51,13 +51,13 @@
   <div class="row d-flex justify-content-center justify-content-md-start">
     <div class="col-12 col-md-11 offset-md-1 text-center text-md-start">
       <a href="{% url 'registro_nuevo' %}" class="btn btn-dark rounded-1 my-4">
-        <i class="fa-solid fa-pen"></i> Nuevo Registro
+        Nuevo Registro
       </a>
-      <a href="{% url 'new_ideas_create' %}" class="btn btn-dark rounded-1 my-4">
-        <i class="fa-solid fa-pen"></i> Crear idea
+      <a href="{% url 'new_ideas_create' %}" class="btn btn-secondary rounded-1 my-4">
+        Crear idea
       </a>
-      <a href="{% url 'new_ideas_list' %}" class="btn btn-dark rounded-1 my-4">
-        <i class="fa-solid fa-pen"></i> Lista de ideas
+      <a href="{% url 'new_ideas_list' %}" style="background-color: rgb(186, 186, 188);" class="btn btn-light rounded-1 my-4">
+         Lista de ideas
       </a>
     </div>
   </div>
@@ -65,7 +65,7 @@
   <!-- Lista de registros emocionales -->
   {% if registros %}
     <div class="row mb-4">
-      <div class="col-12 col-md-11 offset-md-1 gap-2 d-flex flex-wrap justify-content-center justify-content-md-start">
+      <div class="col-12 col-md-10 offset-md-1 gap-2 d-flex flex-wrap justify-content-center justify-content-md-start">
         {% for registro in registros %}
         <div class="text-center bg-dark rounded-1">
           <a href="{% url 'registro_detalle' registro.slug %}" class="btn btn-sm btn-dark" style="width: 5rem;" title="Ver detalles">

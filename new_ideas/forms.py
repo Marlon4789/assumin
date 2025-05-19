@@ -6,7 +6,7 @@ class AddNewIdeasForm(forms.ModelForm):
         model = AddNewIdeas
         fields = ['idea']
         widgets = {
-            'idea':  forms.Textarea(attrs={'class': 'form-control focus-ring focus-ring-secondary py-1 px-2 text-decoration-none', 'rows': 7, 'placeholder': '¿Cual es tu idea?'}),
+            'idea':  forms.Textarea(attrs={'class': 'form-control focus-ring focus-ring-secondary py-1 px-2 text-decoration-none', 'rows': 13, 'placeholder': '¿Cual es tu idea?'}),
         }
         labels = {
             'idea': '¿Cuál es tu idea?',
