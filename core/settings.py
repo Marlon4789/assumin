@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'new_ideas',
     'analysis_registers_ai',
 
-    # allauth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -126,7 +125,6 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -137,7 +135,6 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -184,13 +181,6 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 #OpenAI API Key
 OPENAI_API_KEY = config('OPENAI_API_KEY')
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
 STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
