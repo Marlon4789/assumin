@@ -2,10 +2,10 @@
 
 Una aplicación web en Django para **registrar emociones y analizar datos con inteligencia artificial**.
 
-## 📝 Descripción
+## Descripción
 
 Assumin es una plataforma que permite a los usuarios:
-- 🎤 Registrar sus emociones y estados emocionales
+- Registrar sus emociones y estados emocionales
 - Guardar y organizar información personal
 - Analizar registros utilizando inteligencia artificial
 - Compartir y colaborar en nuevas ideas
